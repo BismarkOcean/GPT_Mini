@@ -1,0 +1,58 @@
+# Local corpora: retain only directory placeholders.
+/data/**
+!/data/raw/
+!/data/processed/
+!/data/raw/.gitkeep
+!/data/processed/.gitkeep
+
+# Training outputs and downloaded weights, wherever they are written.
+/artifacts/**
+!/artifacts/.gitkeep
+/checkpoints/
+/runs/
+/logs/
+/outputs/
+/experiments/
+/wandb/
+/mlruns/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.bin
+events.out.tfevents.*
+
+# Python environments, caches and packaging output.
+.venv/
+venv/
+env/
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+build/
+dist/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Machine-local editor and OS files.
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+
+# Local learning notes and assistant instructions.
+/docs/
+/AGENTS.md
+/Note_for_me.md

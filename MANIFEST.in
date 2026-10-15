@@ -1,0 +1,4 @@
+include scripts/check_environment.py
+include scripts/prepare_data.py
+exclude AGENTS.md Note_for_me.md
+prune docs

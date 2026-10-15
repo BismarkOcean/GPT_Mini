@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpt-mini"
+version = "0.1.0"
+description = "A compact decoder-only Transformer implemented with PyTorch."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+# Install the appropriate CPU/CUDA wheel first; see README.md.
+train = ["torch>=2.4,<3"]
+dev = [
+    "pytest>=8,<10",
+    "ruff>=0.6,<1",
+    "build>=1.2,<2",
+    "setuptools>=69",
+    "wheel",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["gpt_mini*"]
+namespaces = false
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --import-mode=importlib"
+markers = [
+    "smoke: checks for package installation and module boundaries",
+    "cuda: tests that explicitly require an available CUDA device",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+# Exclude root-level corpora and outputs; keep src/gpt_mini/data checked.
+extend-exclude = ["data/**", "artifacts/**"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
